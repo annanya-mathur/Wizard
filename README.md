@@ -2,12 +2,13 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
-## DashBoard
-
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+## DashBoard
+
+![image](https://github.com/annanya-mathur/Wizard/assets/68476475/4a0d3049-31d4-463f-b111-3af263457fe8)
 
 ## Code scaffolding
 
