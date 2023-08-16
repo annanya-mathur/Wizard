@@ -8,7 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ## DashBoard
 
-![image](https://github.com/annanya-mathur/Wizard/assets/68476475/4a0d3049-31d4-463f-b111-3af263457fe8)
+![image](https://github.com/annanya-mathur/Wizard/assets/68476475/9d6176f3-7575-4075-81e6-0b8b1fccb718)
 
 ## Code scaffolding
 
