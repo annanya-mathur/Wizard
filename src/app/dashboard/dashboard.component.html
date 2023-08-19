@@ -9,7 +9,7 @@
 <div class="row">
     <div class="col-lg-3 pb-3" style="background-color: #e9e6e6;">
     <div class="row">
-        <div class="col-11 text-white text-center mx-auto rounded pt-2 pb-2 font weight bold" style="background-color:#6610f2 ;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">{{Designation}} </div>
+        <div class="col-11 text-white text-center mx-auto rounded pt-2 pb-2 font weight bold" style="background-color:#6610f2 ;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">{{Designation | uppercase}} </div>
             <div class="col-12 text-center mt-2">
                 <img src="assets/user.png" width="120px">
             </div>
@@ -56,7 +56,7 @@
                 Project A
             </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" href="#" *ngFor="let projects of Projects">{{projects}}</a>
+            <a class="dropdown-item" href="#" *ngFor="let projects of Projects" onclick="return false" (click)="onProjectChange($event)">{{projects}}</a>
             
         </div>
         </div>
@@ -118,11 +118,20 @@
             <div class="card" *ngFor="let teamMembersGroup of TeamMembers; let i=index">
                 <div class="card-header bg-dark" id="card1">
                     <h2 class="mb=0">
-                        <button class="btn btn-link text-white" type="button" data-toggle="collapse" [attr.data-target]="'#cardbody'+i">{{teamMembersGroup.Region}} </button>
+                        <button class="btn btn-link text-white" type="button" data-toggle="collapse" [attr.data-target]="'#cardbody'+i" >{{teamMembersGroup.Region}} </button>
                     </h2>
                 </div>
-                <div [id]="'cardbody'+i" class="collapse" data-parent="#accordion1">
+                <div [id]="'cardbody'+i" class="collapse" data-parent="#accordion1" [ngClass]="(i==0)?'show':''">
                     <div class ="card-body">
+                        <div *ngIf="i==0; then firstTemplate else secondTemplate"></div>
+                        <ng-template #firstTemplate>
+                            <div class="card" *ngFor="let member of teamMembersGroup.Members">
+                                <div class="card-header bg-primary text-white">#{{member.ID}} {{member.Name}} </div>
+                                <div class="card-body" [style.color]="(member.Status == 'Busy')?'red':'green'">{{member.Status}}</div>
+                            </div>
+                        </ng-template>   
+
+                        <ng-template #secondTemplate>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -134,12 +143,13 @@
                             <tbody>
                                 <tr *ngFor ="let member of teamMembersGroup.Members">
                                     <td>{{member.ID}} </td>
-                                    <td>{{member.Name}}</td>
+                                    <td [style.color]="(member.Status == 'Busy')?'red':'green'">{{member.Name}}</td>
                                     <td><i class="fa fa-phone"></i> {{member.Status}} </td>
                                 </tr>
                                 
                             </tbody>
                         </table>
+                    </ng-template>
                     </div>
                 </div>
             </div>
